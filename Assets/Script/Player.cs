@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     private SpawnManager _spawnManager;
     [SerializeField]
     private bool _isTripleShotActived = false;
+    [SerializeField]
+    private bool _isShieldupActived = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
 
@@ -112,6 +115,31 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(5.0f);
         _isTripleShotActived = false;
+    }
+
+    public void SpeedupActive()
+    {
+        _speed = 7.0f;
+        StartCoroutine(SpeedupDownRoutine());
+    }
+
+    IEnumerator SpeedupDownRoutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _speed = 3.5f;
+    }
+    
+
+    public void ShieldupActive()
+    {
+        _isShieldupActived = true;
+        StartCoroutine(ShieldupDownRoutine());
+    }
+
+    IEnumerator ShieldupDownRoutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _isShieldupActived = false;
     }
 
 }

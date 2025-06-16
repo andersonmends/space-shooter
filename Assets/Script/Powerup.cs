@@ -4,12 +4,8 @@ public class Powerup : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 3.0f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
+    [SerializeField]
+    private int _powerupID; //0: tripleshot 1: speedup 2:shieldup
     // Update is called once per frame
     void Update()
     {
@@ -28,9 +24,24 @@ public class Powerup : MonoBehaviour
 
             Player player = other.GetComponent<Player>();
 
-            if (player!= null)
+            if (player != null)
             {
-                player.TripleShotActive();
+                switch (_powerupID)
+                {
+
+                    case 0:
+                        player.TripleShotActive();
+                        break;
+                    case 1:
+                        player.SpeedupActive();
+                        break;
+                    case 2:
+                        player.ShieldupActive();
+                        break;
+
+                }
+
+
             }
             Destroy(this.gameObject);
         }
