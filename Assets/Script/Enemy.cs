@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "Player")
         {
@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
             
         }
 
-        if (other.gameObject.name == "Laser(Clone)")
+        if (other.gameObject.CompareTag("Laser"))
         {
             Destroy(other.gameObject);
             Destroy(this.gameObject);
