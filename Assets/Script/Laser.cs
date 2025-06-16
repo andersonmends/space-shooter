@@ -5,12 +5,7 @@ public class Laser : MonoBehaviour
 {
 
     private float _speed = 8.2f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
+   
     // Update is called once per frame
     void Update()
     {
@@ -18,6 +13,11 @@ public class Laser : MonoBehaviour
 
     if (transform.position.y > 8f)
     {
+        if (transform.parent != null)
+        {
+            
+            Destroy(transform.parent.gameObject);
+        }
             Destroy(this.gameObject);
     }
 
