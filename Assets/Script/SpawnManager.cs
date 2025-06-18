@@ -6,11 +6,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject _enemyPrefab;
     [SerializeField]
-    private GameObject _powerupTripleShotPrefab;
-    [SerializeField]
-    private GameObject _speedupPrefab;
-    [SerializeField]
-    private GameObject _shieldupPrefab;
+    private GameObject[] _powerups;
     [SerializeField]
     private GameObject _enemyConteiner;
     private bool _stopSpawning = false;
@@ -20,8 +16,7 @@ public class SpawnManager : MonoBehaviour
     {
         StartCoroutine(SpawnEnemyRoutine());
         StartCoroutine(SpawnTripleShotRoutine());
-        StartCoroutine(SpawnShieldupRoutine());
-        StartCoroutine(SpawnSpeedupRoutine());
+       
     }
 
     IEnumerator SpawnEnemyRoutine()
@@ -42,31 +37,14 @@ public class SpawnManager : MonoBehaviour
     {
         while (_stopSpawning == false)
         {
+
+            int powerupRandon = Random.Range(0, 3);
             Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
-            Instantiate(_powerupTripleShotPrefab, posToSpawn, Quaternion.identity);
-            yield return new WaitForSeconds(Random.Range(5,15));
+            Instantiate(_powerups[powerupRandon], posToSpawn, Quaternion.identity);
+            yield return new WaitForSeconds(Random.Range(2,2));
         }
     }
 
-    IEnumerator SpawnSpeedupRoutine()
-    {
-        while (_stopSpawning == false)
-        {
-            Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
-            Instantiate(_speedupPrefab, posToSpawn, Quaternion.identity);
-            yield return new WaitForSeconds(Random.Range(5,10));
-        }
-    }
-
-    IEnumerator SpawnShieldupRoutine()
-    {
-        while (_stopSpawning == false)
-        {
-            Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
-            Instantiate(_shieldupPrefab, posToSpawn, Quaternion.identity);
-            yield return new WaitForSeconds(Random.Range(3,8));
-        }
-    }
 
     public void OnPlayerDeath()
     {
