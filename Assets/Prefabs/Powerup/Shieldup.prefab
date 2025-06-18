@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3024030117916692610}
   - component: {fileID: 2365923512551875693}
   - component: {fileID: 8790353313416082205}
-  - component: {fileID: 3582177309640721217}
+  - component: {fileID: 8506087223956971499}
   m_Layer: 0
   m_Name: Shieldup
   m_TagString: Untagged
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _powerupID: 2
---- !u!95 &3582177309640721217
+--- !u!95 &8506087223956971499
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ Animator:
   m_GameObject: {fileID: 3984021034613102343}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9795f9b4fb7fda043bfee87bff21b464, type: 2}
+  m_Controller: {fileID: 9100000, guid: 76dfe2eabfd2c1d4888530ee62d935c4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

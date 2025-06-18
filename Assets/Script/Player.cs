@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     private bool _isTripleShotActived = false;
     [SerializeField]
     private bool _isShieldupActived = false;
+    [SerializeField]
+    private GameObject _shieldVisualizer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -99,6 +101,7 @@ public class Player : MonoBehaviour
         if (_isShieldupActived == true)
         {
             _isShieldupActived = false;
+            _shieldVisualizer.SetActive(false);
             return;
         }
         
@@ -140,7 +143,9 @@ public class Player : MonoBehaviour
     public void ShieldupActive()
     {
         _isShieldupActived = true;
-        
+        _shieldVisualizer.SetActive(true);
     }
+    
+    
 
 }
