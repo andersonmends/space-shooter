@@ -95,6 +95,13 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
+
+        if (_isShieldupActived == true)
+        {
+            _isShieldupActived = false;
+            return;
+        }
+        
         _lives--;
 
         if (_lives < 1)
@@ -133,13 +140,7 @@ public class Player : MonoBehaviour
     public void ShieldupActive()
     {
         _isShieldupActived = true;
-        StartCoroutine(ShieldupDownRoutine());
-    }
-
-    IEnumerator ShieldupDownRoutine()
-    {
-        yield return new WaitForSeconds(5.0f);
-        _isShieldupActived = false;
+        
     }
 
 }
