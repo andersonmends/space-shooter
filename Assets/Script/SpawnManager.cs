@@ -11,16 +11,15 @@ public class SpawnManager : MonoBehaviour
     private GameObject _enemyConteiner;
     private bool _stopSpawning = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void StartSpawning()
     {
         StartCoroutine(SpawnEnemyRoutine());
         StartCoroutine(SpawnTripleShotRoutine());
-       
     }
 
     IEnumerator SpawnEnemyRoutine()
     {
+        yield return new WaitForSeconds(3f);
 
         while (_stopSpawning == false)
         {
@@ -35,13 +34,16 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnTripleShotRoutine()
     {
+        
+        yield return new WaitForSeconds(3f);
+
         while (_stopSpawning == false)
         {
 
             int powerupRandon = Random.Range(0, 3);
             Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
             Instantiate(_powerups[powerupRandon], posToSpawn, Quaternion.identity);
-            yield return new WaitForSeconds(Random.Range(2,2));
+            yield return new WaitForSeconds(Random.Range(2, 2));
         }
     }
 
