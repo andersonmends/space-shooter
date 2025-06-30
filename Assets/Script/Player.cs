@@ -32,6 +32,14 @@ public class Player : MonoBehaviour
     private bool _isShieldupActived = false;
     [SerializeField]
     private GameObject _shieldVisualizer;
+    [SerializeField]
+    private int _score;
+    [SerializeField]
+    private UIManager _uiManager;
+    [SerializeField]
+    private GameObject _rightEngineVisualizer;
+    [SerializeField]
+    private GameObject _leftEngineVisualizer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,8 +50,16 @@ public class Player : MonoBehaviour
 
         if (_spawnManager == null)
         {
-            Debug.LogError("Spawn NULL");
+            Debug.LogError("SpawnManager NULL");
         }
+
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+
+        if (_uiManager == null)
+        {
+            Debug.LogError("UIManager NULL");
+        }
+
     }
 
     // Update is called once per frame
@@ -104,8 +120,19 @@ public class Player : MonoBehaviour
             _shieldVisualizer.SetActive(false);
             return;
         }
-        
+
         _lives--;
+
+        if (_lives == 2)
+        {
+            _rightEngineVisualizer.SetActive(true);
+        }
+        if (_lives == 1)
+        {
+            _leftEngineVisualizer.SetActive(true);
+        }
+
+        _uiManager.UpdateLives(_lives);
 
         if (_lives < 1)
         {
@@ -138,14 +165,18 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
         _speed = 3.5f;
     }
-    
+
 
     public void ShieldupActive()
     {
         _isShieldupActived = true;
         _shieldVisualizer.SetActive(true);
     }
-    
-    
 
+
+    public void AddScore(int score)
+    {
+        _score += score;
+        _uiManager.UpdateScore(_score);
+    }
 }
