@@ -8,6 +8,7 @@ public class Asteroid : MonoBehaviour
     private GameObject _explosion;
     [SerializeField]
     private SpawnManager _spawnManager;
+    // private AudioSource _explosionAudioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,6 +18,8 @@ public class Asteroid : MonoBehaviour
         {
             Debug.LogError("Spawn manager is NULL");
         }
+
+        // _explosionAudioSource = GetComponent<AudioSource>();
 
     }
 
@@ -32,6 +35,7 @@ public class Asteroid : MonoBehaviour
         {
             Instantiate(_explosion, transform.position, Quaternion.identity);
             _spawnManager.StartSpawning();
+            // _explosionAudioSource.Play();
             Destroy(other);
             Destroy(this.gameObject,0.25f);
         }

@@ -40,6 +40,10 @@ public class Player : MonoBehaviour
     private GameObject _rightEngineVisualizer;
     [SerializeField]
     private GameObject _leftEngineVisualizer;
+    [SerializeField]
+    private AudioClip _laserSound;
+    [SerializeField]
+    private AudioSource _audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,6 +62,16 @@ public class Player : MonoBehaviour
         if (_uiManager == null)
         {
             Debug.LogError("UIManager NULL");
+        }
+
+        _audioSource = GetComponent<AudioSource>();
+
+        if (_audioSource == null)
+        {
+            Debug.LogError("Audio Source is NULL");
+        }else
+        {
+            _audioSource.clip = _laserSound;
         }
 
     }
@@ -107,6 +121,8 @@ public class Player : MonoBehaviour
                 Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.8f, 0), UnityEngine.Quaternion.identity);
 
             }
+
+            _audioSource.Play();
 
         }
     }
