@@ -6,6 +6,8 @@ public class Powerup : MonoBehaviour
     private float _speed = 3.0f;
     [SerializeField]
     private int _powerupID; //0: tripleshot 1: speedup 2:shieldup
+    [SerializeField]
+    private AudioClip _powerupSound;
     // Update is called once per frame
     void Update()
     {
@@ -18,7 +20,9 @@ public class Powerup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // other.TripleShortEnable();
+
+        AudioSource.PlayClipAtPoint(_powerupSound, transform.position);
+
         if (other.tag == "Player")
         {
 

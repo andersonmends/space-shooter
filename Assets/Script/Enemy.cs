@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     private Player _player;
     private Animator _anim;
-
+    private AudioSource _explosionSound;
 
     void Start()
     {
@@ -24,6 +24,13 @@ public class Enemy : MonoBehaviour
         if (_anim == null)
         {
             Debug.LogError("Anim is NULL");
+        }
+
+        _explosionSound = GetComponent<AudioSource>();
+
+        if (_explosionSound == null)
+        {
+            Debug.LogError("Audio Sourcer is NULL");
         }
     }
 
@@ -55,6 +62,7 @@ public class Enemy : MonoBehaviour
 
             _anim.SetTrigger("OnEnemyDeath");
             _speed = 0.1f;
+            _explosionSound.Play();
             Destroy(this.gameObject,2.5f);
             
         }
@@ -69,6 +77,7 @@ public class Enemy : MonoBehaviour
 
             _anim.SetTrigger("OnEnemyDeath");
             _speed = 0.1f;
+            _explosionSound.Play();
             Destroy(this.gameObject,2.5f);
         }
     }
