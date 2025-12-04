@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour
 {
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private float _speed = 4.0f;
+    private float _speed = 3.0f;
 
     private Player _player;
     private Animator _anim;
@@ -47,9 +47,15 @@ public class Enemy : MonoBehaviour
 
         if (Time.deltaTime > _canFire)
         {
-            _fireRate = Random.Range(3.0f, 7.0f);
-            _canFire = Time.deltaTime + _fireRate;
-            Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+            _fireRate = Random.Range(3f, 7f);
+            _canFire = Time.time + _fireRate;
+            GameObject enemyLaser = Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+            Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
+            
+            for (int i = 0; i < lasers.Length; i++)
+            {
+                lasers[i].AssignEnemyLasers();
+            }
         }
 
     }
