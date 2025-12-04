@@ -5,9 +5,13 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField]
     private bool _isGameOver;
-    public void LoadGame()
+    public void LoadSinglePlayer()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("SinglePlayerMode");
+    }
+    public void LoadCoOp()
+    {
+        SceneManager.LoadScene("CoOpMode");
     }
 
     public void GameOver()

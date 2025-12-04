@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scene/Game.unity
+    path: Assets/Scene/SinglePlayerMode.unity
     guid: 7f09cdc5e3f8c1f4ca96af657c67aa90
   - enabled: 1
     path: Assets/Scene/MainMenu.unity
     guid: 309ec4e31ba962c44b8cb46eed859994
+  - enabled: 1
+    path: Assets/Scene/CoOpMode.unity
+    guid: 7872e7c7f42e4314dbe9df55bac38730
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
