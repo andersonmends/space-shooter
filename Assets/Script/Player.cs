@@ -44,12 +44,14 @@ public class Player : MonoBehaviour
     private AudioClip _laserSound;
     [SerializeField]
     private AudioSource _audioSource;
+    [SerializeField]
+    private GameManager _gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
 
     {
-        transform.position = new Vector3(0, -3, 0);
+        
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
 
         if (_spawnManager == null)
@@ -72,6 +74,13 @@ public class Player : MonoBehaviour
         }else
         {
             _audioSource.clip = _laserSound;
+        }
+
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        if (_gameManager.isCoOpMode == false)
+        {
+            transform.position = new Vector3(0, -3, 0);
         }
 
     }

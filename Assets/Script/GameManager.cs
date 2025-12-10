@@ -5,9 +5,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private bool _isGameOver;
+    public bool isCoOpMode = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
 
     }
 

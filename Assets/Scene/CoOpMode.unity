@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 512685605}
   - component: {fileID: 512685609}
   m_Layer: 0
-  m_Name: Player1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -492,6 +492,7 @@ MonoBehaviour:
   _leftEngineVisualizer: {fileID: 105874606}
   _laserSound: {fileID: 8300000, guid: 75676f361bdfeaf41a46623e95df3dbc, type: 3}
   _audioSource: {fileID: 0}
+  _gameManager: {fileID: 0}
 --- !u!4 &512685608
 Transform:
   m_ObjectHideFlags: 0
@@ -524,7 +525,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.21
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -988,6 +989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isGameOver: 0
+  isCoOpMode: 1
 --- !u!4 &1050399400
 Transform:
   m_ObjectHideFlags: 0
@@ -1066,6 +1068,10 @@ PrefabInstance:
     - target: {fileID: 6103926982174293737, guid: f9a7570e8ca69e245a06991f10280269, type: 3}
       propertyPath: m_Name
       value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731288953038171939, guid: f9a7570e8ca69e245a06991f10280269, type: 3}
+      propertyPath: m_Volume
+      value: 0.21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1692,7 +1698,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5b17a0088dcdf924fa92da5af1e1be07, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.21
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour
 {
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private float _speed = 3.0f;
+    private float _speed = 4.0f;
 
     private Player _player;
     private Animator _anim;
@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
 
             Player player = other.transform.GetComponent<Player>();
