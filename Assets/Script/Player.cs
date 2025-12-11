@@ -47,11 +47,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameManager _gameManager;
 
+    public bool isPlayerOne = false;
+    public bool isPlayerTwo = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
 
     {
-        
+
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
 
         if (_spawnManager == null)
@@ -71,7 +74,8 @@ public class Player : MonoBehaviour
         if (_audioSource == null)
         {
             Debug.LogError("Audio Source is NULL");
-        }else
+        }
+        else
         {
             _audioSource.clip = _laserSound;
         }
@@ -87,13 +91,23 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+
     {
-        CalculateMovement();
-        FireLaser();
+        if (isPlayerOne == true)
+        {
+            CalculateMovementPlayerOne();
+            FireLaserPlayerOne();
+        }
+        if (isPlayerTwo == true)
+        {
+            CalculateMovementPlayerTwo();
+            FireLaserPlayerTwo();
+        }
+
 
     }
 
-    void CalculateMovement()
+    void CalculateMovementPlayerOne()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -113,10 +127,65 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(11.3f, transform.position.y, 0);
         }
     }
+    void CalculateMovementPlayerTwo()
+    {
+       
 
-    void FireLaser()
+        if (Input.GetKey(KeyCode.Keypad8))
+        {
+            transform.Translate(Vector3.up * _speed * Time.deltaTime);
+        }
+         if (Input.GetKey(KeyCode.Keypad5))
+        {
+            transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.Keypad6))
+        {
+            transform.Translate(Vector3.right * _speed * Time.deltaTime);
+        }
+         if (Input.GetKey(KeyCode.Keypad4))
+        {
+            transform.Translate(Vector3.left * _speed * Time.deltaTime);
+        }
+
+        
+
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0), 0);
+
+        if (transform.position.x > 11.3f)
+        {
+            transform.position = new Vector3(-11.3f, transform.position.y, 0);
+        }
+        else if (transform.position.y < -11.3f)
+        {
+            transform.position = new Vector3(11.3f, transform.position.y, 0);
+        }
+    }
+
+    void FireLaserPlayerOne()
     {
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
+        {
+            _canFire = Time.time + _fireRate;
+
+
+            if (_isTripleShotActived == true)
+            {
+                Instantiate(_tripleShotPrefab, transform.position + new Vector3(0.6f, 0.8f, 0), UnityEngine.Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.8f, 0), UnityEngine.Quaternion.identity);
+
+            }
+
+            _audioSource.Play();
+
+        }
+    }
+    void FireLaserPlayerTwo()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && Time.time > _canFire)
         {
             _canFire = Time.time + _fireRate;
 

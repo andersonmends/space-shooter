@@ -237,6 +237,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 784254825313353944, guid: f9a7570e8ca69e245a06991f10280269, type: 3}
+      propertyPath: isPlayerOne
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2577996321816648478, guid: f9a7570e8ca69e245a06991f10280269, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.5
@@ -666,6 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isGameOver: 0
+  isCoOpMode: 0
 --- !u!4 &1050399400
 Transform:
   m_ObjectHideFlags: 0

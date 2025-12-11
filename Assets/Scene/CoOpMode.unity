@@ -493,6 +493,8 @@ MonoBehaviour:
   _laserSound: {fileID: 8300000, guid: 75676f361bdfeaf41a46623e95df3dbc, type: 3}
   _audioSource: {fileID: 0}
   _gameManager: {fileID: 0}
+  isPlayerOne: 1
+  isPlayerTwo: 0
 --- !u!4 &512685608
 Transform:
   m_ObjectHideFlags: 0
@@ -1013,6 +1015,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 784254825313353944, guid: f9a7570e8ca69e245a06991f10280269, type: 3}
+      propertyPath: isPlayerTwo
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1256311300995150861, guid: f9a7570e8ca69e245a06991f10280269, type: 3}
       propertyPath: m_Color.b
       value: 0.7490196
