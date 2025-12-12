@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private bool _isGameOver;
     public bool isCoOpMode = false;
+    [SerializeField]
+    private GameObject _pauseMenuPanel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,10 +28,25 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            _pauseMenuPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+        
     }
 
     public void GameOver()
     {
         _isGameOver = true;
     }
+
+    public void ResumeGame()
+    {
+        _pauseMenuPanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
 }

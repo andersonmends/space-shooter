@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -60,5 +61,16 @@ public class UIManager : MonoBehaviour
             _gameoverText.text = "";
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    public void ResumeGamePlay()
+    {
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.ResumeGame();
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
