@@ -8,10 +8,14 @@ public class GameManager : MonoBehaviour
     public bool isCoOpMode = false;
     [SerializeField]
     private GameObject _pauseMenuPanel;
+    [SerializeField]
+    private Animator _pauseMenuAnimation;
+    private Vector3 _initialPosition;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        _pauseMenuAnimation.updateMode = AnimatorUpdateMode.UnscaledTime;
+        _initialPosition = _pauseMenuPanel.transform.position;
 
     }
 
@@ -31,11 +35,13 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
+
+            _pauseMenuAnimation.SetBool("isPauseMenu", true);
             _pauseMenuPanel.SetActive(true);
             Time.timeScale = 0;
         }
 
-        
+
     }
 
     public void GameOver()
@@ -45,7 +51,10 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+
         _pauseMenuPanel.SetActive(false);
+        _pauseMenuPanel.transform.position = _initialPosition;
+        _pauseMenuPanel.SetActive(true);
         Time.timeScale = 1;
     }
 
