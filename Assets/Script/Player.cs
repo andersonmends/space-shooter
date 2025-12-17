@@ -231,6 +231,7 @@ public class Player : MonoBehaviour
         if (_lives < 1)
         {
             Destroy(this.gameObject);
+            _uiManager.CheckForBestScore();
             _spawnManager.OnPlayerDeath();
         }
     }

@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public int bestScore = 0;
+    public int score;
     [SerializeField]
     private Sprite[] _liveSprites;
     [SerializeField]
     private Image _liveImage;
+    [SerializeField]
+    private TextMeshProUGUI _bestScoreText;
     [SerializeField]
     private TextMeshProUGUI _scoreText;
     [SerializeField]
@@ -21,6 +25,8 @@ public class UIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        this.bestScore = PlayerPrefs.GetInt("HighScore",0);
+        _bestScoreText.text = "Best: " + this.bestScore;
         _scoreText.text = "Score: " + 0;
         _gameoverText.gameObject.SetActive(false);
         _restartText.gameObject.SetActive(false);
@@ -34,9 +40,21 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void CheckForBestScore()
+    {
+
+        if (bestScore < score)
+        {
+            bestScore = score;
+            PlayerPrefs.SetInt("HighScore",this.bestScore);
+            _bestScoreText.text = "Best: " + this.bestScore;
+        }
+    }
+
     public void UpdateScore(int score)
     {
-        _scoreText.text = "Score: " + score;
+        this.score = score;
+        _scoreText.text = "Score: " +this.score;
     }
 
     public void UpdateLives(int currentLives)
